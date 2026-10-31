@@ -997,18 +997,19 @@
             </div>
           </div>
 
-          <!-- Per-Episode Dedicated Actions -->
+                    <!-- Per-Episode Dedicated Actions -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-3 border-t border-slate-800/80">
-            <button onclick="alert('Watching Episode ${ep.ep} on YouTube...')" class="py-2 px-3 rounded-xl bg-slate-800/80 hover:bg-amber-400 hover:text-slate-950 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95">
+            <a href="${ep.videoUrl || 'https://youtube.com/@conceptbhaiyaa'}" target="_blank" rel="noopener noreferrer" class="py-2 px-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95">
               <span>▶ Watch Lecture</span>
-            </button>
-            <button onclick="alert('Downloading Notes for Episode ${ep.ep}...')" class="py-2 px-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95">
+            </a>
+            <a href="${ep.notesUrl || '#'}" target="_blank" rel="noopener noreferrer" class="py-2 px-3 rounded-xl bg-slate-800/80 hover:bg-amber-400 hover:text-slate-950 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95">
               <span>📄 Download Notes</span>
-            </button>
-            <button onclick="alert('Downloading DPP for Episode ${ep.ep}...')" class="py-2 px-3 rounded-xl bg-slate-800/80 hover:bg-emerald-500 hover:text-slate-950 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95">
+            </a>
+            <a href="${ep.dppUrl || '#'}" target="_blank" rel="noopener noreferrer" class="py-2 px-3 rounded-xl bg-slate-800/80 hover:bg-emerald-500 hover:text-slate-950 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95">
               <span>📝 Episode DPP</span>
-            </button>
+            </a>
           </div>
+
         `;
 
         container.appendChild(epCard);
