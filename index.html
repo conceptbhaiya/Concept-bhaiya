@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concept Bhaiya | Visual Learning</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    /* Fluid Screen Transitions */
+    .screen-enter {
+      animation: screenEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes screenEnter {
+      0% { opacity: 0; transform: translateY(12px) scale(0.99); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Staggered Row Reveal for Chapters */
+    .chapter-row {
+      animation: rowSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+    @keyframes rowSlide {
+      0% { opacity: 0; transform: translateY(14px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Smooth flashcard flip */
+    .perspective-1000 { perspective: 1000px; }
+  </style>
+</head>
+<body class="bg-[#080b12] text-slate-100 min-h-screen flex flex-col selection:bg-amber-400 selection:text-slate-950 antialiased overflow-x-hidden">
+
+  <!-- Top Navigation Bar -->
+  <header class="w-full bg-[#080b12]/90 backdrop-blur-md border-b border-slate-800/60 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 h-18 flex items-center justify-between py-4">
+      
+      <!-- Top-Left Mini Logo & Brand -->
+      <div onclick="showScreen('hero-screen')" class="flex items-center gap-3 cursor-pointer group active:scale-95 transition-transform duration-150">
+        <div class="w-10 h-10 rounded-full border border-amber-400/40 overflow-hidden flex items-center justify-center bg-black/50 shadow-sm group-hover:border-amber-400 transition-colors">
+          <img 
+            src="logo.png" 
+            alt="CB" 
+            class="w-full h-full object-cover rounded-full"
+            onerror="this.parentElement.innerHTML='<span class=\'text-amber-400 font-bold text-sm\'>CB</span>'"
+          />
+        </div>
+        <span class="text-base font-bold text-white tracking-tight">Concept <span class="text-amber-400">Bhaiya</span></span>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="flex items-center gap-5 sm:gap-8 text-sm font-medium text-slate-300">
+        <button id="nav-home" onclick="showScreen('hero-screen')" class="text-amber-400 font-semibold transition hover:text-amber-300 active:scale-95">Home</button>
+        <button id="nav-subjects" onclick="showScreen('subjects-screen')" class="hover:text-white transition active:scale-95">Subjects</button>
+        <a href="#youtube" class="hover:text-white transition active:scale-95">YouTube</a>
+        <a href="#about" class="hover:text-white transition active:scale-95">About</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-10 flex flex-col justify-center items-center">
+
+    <!-- ================= SCREEN 1: HERO VIEW ================= -->
+    <section id="hero-screen" class="w-full flex flex-col justify-center items-center text-center screen-enter">
+      
+      <!-- Big Central Logo with Ambient Amber Halo -->
+      <div class="relative mb-8 flex justify-center items-center">
+        <div class="absolute w-72 h-72 sm:w-80 sm:h-80 rounded-full bg-amber-400/15 blur-3xl pointer-events-none animate-pulse" style="animation-duration: 4s;"></div>
+        <div class="relative w-60 h-60 sm:w-72 sm:h-72 rounded-full p-1.5 bg-gradient-to-b from-amber-400/80 via-slate-800 to-amber-500/40 shadow-[0_0_50px_rgba(245,158,11,0.25)] flex items-center justify-center overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer">
+          <img 
+            src="logo.png" 
+            alt="Concept Bhaiya" 
+            class="w-full h-full object-cover rounded-full bg-slate-900"
+            onerror="this.parentElement.innerHTML='<span class=\'text-5xl font-extrabold text-amber-400\'>CB</span>'"
+          />
+        </div>
+      </div>
+
+      <!-- Platform Pill Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-5 rounded-full bg-slate-900/90 border border-amber-400/30 text-amber-300 text-xs sm:text-sm font-medium shadow-sm">
+        <span>🚀</span> India's Visual Learning Platform for NEET
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-4">
+        Concept <span class="text-amber-400">Bhaiya</span>
+      </h1>
+
+      <!-- Core Pitch -->
+      <p class="text-slate-300 text-base sm:text-lg max-w-xl mb-3 leading-relaxed font-normal">
+        Master Biology, Chemistry & Physics through visual clarity.
+      </p>
+
+      <!-- Signature Slogan -->
+      <p class="text-amber-300 text-base sm:text-lg font-bold mb-8 tracking-wide">
+        Concept Samjho. Marks Apne Aap Aayenge.
+      </p>
+
+      <!-- Action Button -->
+      <button 
+        onclick="showScreen('subjects-screen')" 
+        class="px-10 py-4 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-extrabold rounded-full shadow-lg shadow-amber-500/25 active:scale-95 hover:shadow-amber-500/40 hover:-translate-y-0.5 transition-all duration-200 text-base sm:text-lg cursor-pointer">
+        Start Learning →
+      </button>
+
+    </section>
+
+    <!-- ================= SCREEN 2: CHOOSE YOUR SUBJECT ================= -->
+    <section id="subjects-screen" class="hidden w-full max-w-4xl flex-col items-center text-center">
+      
+      <!-- Back Button -->
+      <div class="w-full flex justify-start mb-6">
+        <button 
+          onclick="showScreen('hero-screen')" 
+          class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-amber-400 transition font-medium active:scale-95">
+          ← Back to Home
+        </button>
+      </div>
+
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-4 rounded-full bg-slate-900/90 border border-amber-400/30 text-amber-300 text-xs sm:text-sm font-semibold tracking-wide">
+        <span>🎯</span> Select Your Stream
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-3">
+        Choose Your <span class="text-amber-400">Subject</span>
+      </h2>
+      <p class="text-slate-400 text-sm sm:text-base max-w-md mb-10">
+        Select a subject to dive into visual lectures, chapter notes, and concept builders.
+      </p>
+
+      <!-- 3 Subject Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+        
+        <!-- Biology Card -->
+        <div 
+          onclick="openSubject('Biology')" 
+          class="group relative p-7 rounded-3xl bg-slate-900/60 border border-slate-800 hover:border-amber-400/70 transition-all duration-200 cursor-pointer text-left hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/15 active:scale-[0.98] flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-amber-400/10 border border-amber-400/20 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-amber-400/20 transition-all duration-300">
+              🧬
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">Biology</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Botany, Zoology, Genetics & Human Physiology with high-yield visual memory maps.
+            </p>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800 text-xs font-semibold text-slate-400 group-hover:text-amber-400 transition-colors">
+            <span>Class 11 & 12</span>
+            <span class="text-base group-hover:translate-x-1.5 transition-transform duration-200">→</span>
+          </div>
+        </div>
+
+        <!-- Chemistry Card -->
+        <div 
+          onclick="openSubject('Chemistry')" 
+          class="group relative p-7 rounded-3xl bg-slate-900/60 border border-slate-800 hover:border-amber-400/70 transition-all duration-200 cursor-pointer text-left hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/15 active:scale-[0.98] flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-amber-400/10 border border-amber-400/20 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-amber-400/20 transition-all duration-300">
+              🧪
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">Chemistry</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Organized into Physical, Inorganic & Organic branches for systematic mastery.
+            </p>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800 text-xs font-semibold text-slate-400 group-hover:text-amber-400 transition-colors">
+            <span>Physical • Organic • Inorganic</span>
+            <span class="text-base group-hover:translate-x-1.5 transition-transform duration-200">→</span>
+          </div>
+        </div>
+
+        <!-- Physics Card -->
+        <div 
+          onclick="openSubject('Physics')" 
+          class="group relative p-7 rounded-3xl bg-slate-900/60 border border-slate-800 hover:border-amber-400/70 transition-all duration-200 cursor-pointer text-left hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/15 active:scale-[0.98] flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-amber-400/10 border border-amber-400/20 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-amber-400/20 transition-all duration-300">
+              ⚡
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">Physics</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Mechanics, Electrodynamics, Optics, and Modern Physics visual derivations.
+            </p>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800 text-xs font-semibold text-slate-400 group-hover:text-amber-400 transition-colors">
+            <span>Class 11 & 12</span>
+            <span class="text-base group-hover:translate-x-1.5 transition-transform duration-200">→</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= SCREEN 3: CLASS SELECTION ================= -->
+    <section id="class-screen" class="hidden w-full max-w-3xl flex-col items-center text-center">
+      
+      <!-- Back Button -->
+      <div class="w-full flex justify-start mb-6">
+        <button 
+          onclick="showScreen('subjects-screen')" 
+          class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-amber-400 transition font-medium active:scale-95">
+          ← Back to Subjects
+        </button>
+      </div>
+
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-4 rounded-full bg-slate-900/90 border border-amber-400/30 text-amber-300 text-xs sm:text-sm font-semibold tracking-wide">
+        <span id="current-subject-icon">🧬</span> <span id="current-subject-pill">Biology</span>
+      </div>
+
+      <h2 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-3">
+        <span id="current-subject-title">Biology</span> <span class="text-amber-400">Hub</span>
+      </h2>
+      <p class="text-slate-400 text-sm sm:text-base max-w-md mb-10">
+        Select your class to unlock lectures, visual notes, chapter flashcards & question banks.
+      </p>
+
+      <!-- Two Class Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+        
+        <!-- Class 11 Card -->
+        <div 
+          onclick="selectClass(11)" 
+          class="group relative p-8 rounded-3xl bg-slate-900/60 border border-slate-800 hover:border-amber-400/80 transition-all duration-200 cursor-pointer text-left hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/15 active:scale-[0.98] flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-amber-400/10 border border-amber-400/20 text-amber-400 flex items-center justify-center font-black text-2xl mb-6 group-hover:scale-110 group-hover:bg-amber-400/20 transition-all duration-300">
+              11
+            </div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xl">📗</span>
+              <h3 class="text-2xl font-bold text-white group-hover:text-amber-300 transition-colors">Class 11</h3>
+            </div>
+            <h4 class="text-amber-400/90 font-semibold text-sm mb-4"><span class="subject-display-name">Biology</span> Core</h4>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Complete NEET & Board prep: Visual Notes, Flashcards, DPPs & PYQ banks.
+            </p>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800 text-xs font-semibold text-slate-400 group-hover:text-amber-400 transition-colors">
+            <span id="class-11-count">Explore Chapters</span>
+            <span class="text-base group-hover:translate-x-1.5 transition-transform duration-200">→</span>
+          </div>
+        </div>
+
+        <!-- Class 12 Card -->
+        <div 
+          onclick="selectClass(12)" 
+          class="group relative p-8 rounded-3xl bg-slate-900/60 border border-slate-800 hover:border-amber-400/80 transition-all duration-200 cursor-pointer text-left hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/15 active:scale-[0.98] flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-amber-400/10 border border-amber-400/20 text-amber-400 flex items-center justify-center font-black text-2xl mb-6 group-hover:scale-110 group-hover:bg-amber-400/20 transition-all duration-300">
+              12
+            </div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xl">📘</span>
+              <h3 class="text-2xl font-bold text-white group-hover:text-amber-300 transition-colors">Class 12</h3>
+            </div>
+            <h4 class="text-amber-400/90 font-semibold text-sm mb-4"><span class="subject-display-name">Biology</span> Mastery</h4>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              High-yield chapters, visual flowcharts, rapid active recall & board prep.
+            </p>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800 text-xs font-semibold text-slate-400 group-hover:text-amber-400 transition-colors">
+            <span id="class-12-count">Explore Chapters</span>
+            <span class="text-base group-hover:translate-x-1.5 transition-transform duration-200">→</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= SCREEN 4: CHAPTER LIST HUB ================= -->
+    <section id="chapters-screen" class="hidden w-full max-w-3xl flex-col items-center text-center">
+      
+      <!-- Back Button -->
+      <div class="w-full flex justify-start mb-6">
+        <button 
+          onclick="showScreen('class-screen')" 
+          class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-amber-400 transition font-medium active:scale-95">
+          ← Back to Classes
+        </button>
+      </div>
+
+      <!-- Pill Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-4 rounded-full bg-slate-900/90 border border-amber-400/30 text-amber-300 text-xs sm:text-sm font-semibold tracking-wide">
+        <span id="chapter-view-icon">📘</span> <span id="chapter-view-pill">Class 12 Biology</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3">
+        <span id="chapter-view-title">Class 12</span> <span id="chapter-view-highlight" class="text-amber-400">Biology</span>
+      </h2>
+      <p class="text-slate-400 text-sm sm:text-base max-w-md mb-6">
+        Select a chapter to access visual breakdown notes, formula sheets, and question banks.
+      </p>
+
+      <!-- Chemistry Tabs (Only visible when subject is Chemistry) -->
+      <div id="chem-tabs-bar" class="hidden w-full flex items-center justify-center gap-2 mb-6 p-1.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+        <button onclick="setChemTab('physical')" id="tab-physical" class="flex-1 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-amber-400 text-slate-950 shadow-md">Physical</button>
+        <button onclick="setChemTab('inorganic')" id="tab-inorganic" class="flex-1 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-all">Inorganic</button>
+        <button onclick="setChemTab('organic')" id="tab-organic" class="flex-1 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-all">Organic</button>
+      </div>
+
+      <!-- Chapter Items List Container -->
+      <div id="chapters-list-container" class="w-full space-y-3 sm:space-y-3.5">
+        <!-- Rendered dynamically -->
+      </div>
+
+    </section>
+
+    <!-- ================= SCREEN 5: CHAPTER RESOURCE DASHBOARD (MAIN HUB) ================= -->
+    <section id="chapter-dashboard-screen" class="hidden w-full max-w-3xl flex-col items-center text-center">
+      
+      <!-- Back Button -->
+      <div class="w-full flex justify-start mb-6">
+        <button 
+          onclick="showScreen('chapters-screen')" 
+          class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-amber-400 transition font-medium active:scale-95">
+          ← Back to Chapter List
+        </button>
+      </div>
+
+      <!-- Active Chapter Header Card -->
+      <div class="w-full p-6 sm:p-7 rounded-3xl bg-slate-900/70 border border-amber-400/40 shadow-xl shadow-amber-500/10 mb-8 text-left flex items-start justify-between">
+        <div class="flex items-center gap-4">
+          <div id="dash-ch-icon" class="w-14 h-14 rounded-2xl bg-amber-400/10 border border-amber-400/20 text-3xl flex items-center justify-center flex-shrink-0">
+            🌱
+          </div>
+          <div>
+            <div class="inline-flex items-center gap-2 text-xs font-bold text-amber-400 tracking-wider uppercase mb-1">
+              <span id="dash-ch-code">CH 01</span> • <span id="dash-ch-subject">Biology</span>
+            </div>
+            <h2 id="dash-ch-title" class="text-xl sm:text-2xl font-black text-white tracking-tight">
+              The Living World
+            </h2>
+          </div>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          NEET Ready
+        </span>
+      </div>
+
+      <!-- 6 Primary Resource Hub Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full text-left">
+        
+        <!-- 1. Lecture Hub -->
+        <div onclick="openLectureHub()" class="group p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-400/70 transition-all cursor-pointer hover:-translate-y-1 active:scale-[0.98] flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/10 border border-amber-400/20 text-amber-400 text-2xl flex items-center justify-center group-hover:scale-105 transition-transform">
+              📺
+            </div>
+            <div>
+              <h3 class="font-bold text-white text-base group-hover:text-amber-300 transition-colors">Lecture Hub</h3>
+              <p class="text-xs text-slate-400">One-Shot & Episode-Wise</p>
+            </div>
+          </div>
+          <span class="text-slate-500 group-hover:text-amber-400 font-bold">→</span>
+        </div>
+
+        <!-- 2. NCERT Hub -->
+        <div onclick="openNcertHub()" class="group p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-400/70 transition-all cursor-pointer hover:-translate-y-1 active:scale-[0.98] flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/10 border border-amber-400/20 text-amber-400 text-2xl flex items-center justify-center group-hover:scale-105 transition-transform">
+              📖
+            </div>
+            <div>
+              <h3 class="font-bold text-white text-base group-hover:text-amber-300 transition-colors">NCERT Hub</h3>
+              <p class="text-xs text-slate-400">Official NCERT Textbook PDF</p>
+            </div>
+          </div>
+          <span class="text-slate-500 group-hover:text-amber-400 font-bold">↗</span>
+        </div>
+
+        <!-- 3. NCERT Exemplar Hub -->
+        <div onclick="openExemplarHub()" class="group p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-400/70 transition-all cursor-pointer hover:-translate-y-1 active:scale-[0.98] flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/10 border border-amber-400/20 text-amber-400 text-2xl flex items-center justify-center group-hover:scale-105 transition-transform">
+              ✍️
+            </div>
+            <div>
+              <h3 class="font-bold text-white text-base group-hover:text-amber-300 transition-colors">NCERT Exemplar Hub</h3>
+              <p class="text-xs text-slate-400">Interactive Questions & Solutions</p>
+            </div>
+          </div>
+          <span class="text-slate-500 group-hover:text-amber-400 font-bold">→</span>
+        </div>
+
+        <!-- 4. PYQ Hub -->
+        <div onclick="openPyqHub()" class="group p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-400/70 transition-all cursor-pointer hover:-translate-y-1 active:scale-[0.98] flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/10 border border-amber-400/20 text-amber-400 text-2xl flex items-center justify-center group-hover:scale-105 transition-transform">
+              🎯
+            </div>
+            <div>
+              <h3 class="font-bold text-white text-base group-hover:text-amber-300 transition-colors">All PYQs Hub</h3>
+              <p class="text-xs text-slate-400">1988 – Present (Complete Archive)</p>
+            </div>
+          </div>
+          <span class="text-slate-500 group-hover:text-amber-400 font-bold">→</span>
+        </div>
+
+        <!-- 5. Subject Specific Hub (Dynamic: Forget Points / Formula Sheet / Crisps) -->
+        <div onclick="openSpecialHub()" class="group p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-400/70 transition-all cursor-pointer hover:-translate-y-1 active:scale-[0.98] flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div id="special-hub-icon" class="w-12 h-12 rounded-xl bg-amber-400/10 border border-amber-400/20 text-amber-400 text-2xl flex items-center justify-center group-hover:scale-105 transition-transform">
+              💡
+            </div>
+            <div>
+              <h3 id="special-hub-title" class="font-bold text-white text-base group-hover:text-amber-300 transition-colors">Forget Points</h3>
+              <p id="special-hub-desc" class="text-xs text-slate-400">High-yield memory points & exceptions</p>
+            </div>
+          </div>
+          <span class="text-slate-500 group-hover:text-amber-400 font-bold">→</span>
+        </div>
+
+        <!-- 6. Flashcards Hub -->
+        <div onclick="openFlashcardsHub()" class="group p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-400/70 transition-all cursor-pointer hover:-translate-y-1 active:scale-[0.98] flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/10 border border-amber-400/20 text-amber-400 text-2xl flex items-center justify-center group-hover:scale-105 transition-transform">
+              🗂️
+            </div>
+            <div>
+              <h3 class="font-bold text-white text-base group-hover:text-amber-300 transition-colors">Flashcards Hub</h3>
+              <p class="text-xs text-slate-400">Active Recall & Rapid Testing</p>
+            </div>
+          </div>
+          <span class="text-slate-500 group-hover:text-amber-400 font-bold">→</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= SCREEN 6: LECTURE HUB (ONE-SHOT VS EPISODE-WISE) ================= -->
+    <section id="lecture-hub-screen" class="hidden w-full max-w-3xl flex-col items-center text-center">
+      
+      <!-- Back Button -->
+      <div class="w-full flex justify-start mb-6">
+        <button 
+          onclick="showScreen('chapter-dashboard-screen')" 
+          class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-amber-400 transition font-medium active:scale-95">
+          ← Back to Resource Dashboard
+        </button>
+      </div>
+
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-3 rounded-full bg-slate-900/90 border border-amber-400/30 text-amber-300 text-xs sm:text-sm font-semibold tracking-wide">
+        📺 Video Learning System
+      </div>
+
+      <h2 class="text-3xl font-extrabold text-white tracking-tight mb-2">
+        <span id="lecture-hub-chapter-title">The Living World</span>
+      </h2>
+      <p class="text-slate-400 text-xs sm:text-sm max-w-md mb-6">
+        Choose your learning style: Complete marathon revision or structured episode-by-episode mastery.
+      </p>
+
+      <!-- Track Switcher Buttons -->
+      <div class="w-full max-w-md flex items-center justify-center gap-2 mb-8 p-1.5 rounded-2xl bg-slate-900/90 border border-slate-800">
+        <button onclick="setLectureTrack('oneshot')" id="track-oneshot-btn" class="flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-amber-400 text-slate-950 shadow-md">
+          ⚡ One-Shot Mode
+        </button>
+        <button onclick="setLectureTrack('episodes')" id="track-episodes-btn" class="flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-all">
+          📑 Detailed Episode-Wise
+        </button>
+      </div>
+
+      <!-- Track Content 1: ONE-SHOT VIEW -->
+      <div id="oneshot-track-view" class="w-full flex flex-col gap-4 text-left">
+        <div class="p-6 sm:p-7 rounded-3xl bg-slate-900/60 border border-slate-800">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 rounded-lg bg-amber-400/10 border border-amber-400/30 text-amber-400 text-xs font-bold uppercase">Marathon Lecture</span>
+            <span class="text-xs text-slate-400">Full Chapter in One Video</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Complete Chapter Marathon</h3>
+          <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+            High-yield master lecture covering complete theory, visual flowcharts, derivations, and NEET practice.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button onclick="alert('Opening One-Shot on YouTube...')" class="py-3 px-5 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-sm flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-amber-500/20">
+              <span>▶ Watch One-Shot on YouTube</span>
+            </button>
+            <button onclick="alert('Downloading One-Shot Complete Notes PDF...')" class="py-3 px-5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm flex items-center justify-center gap-2 active:scale-95 transition border border-slate-700">
+              <span>📥 Download One-Shot Notes</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Track Content 2: DETAILED EPISODE-WISE VIEW -->
+      <div id="episodes-track-view" class="hidden w-full space-y-4 text-left">
+        <div class="w-full flex items-center justify-between px-1 mb-2">
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Modular Lectures & Homework</span>
+          <span class="text-xs text-amber-400 font-bold" id="episodes-total-count">5 Episodes Available</span>
+        </div>
+        <div id="episodes-list-container" class="space-y-4 w-full">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= SCREEN 7: GENERIC CONTENT HUB (EXEMPLAR, PYQ, SPECIAL, FLASHCARDS) ================= -->
+    <section id="content-display-screen" class="hidden w-full max-w-3xl flex-col items-center text-center">
+      
+      <!-- Back Button -->
+      <div class="w-full flex justify-start mb-6">
+        <button 
+          onclick="showScreen('chapter-dashboard-screen')" 
+          class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-amber-400 transition font-medium active:scale-95">
+          ← Back to Resource Dashboard
+        </button>
+      </div>
+
+      <!-- Header -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-3 rounded-full bg-slate-900/90 border border-amber-400/30 text-amber-300 text-xs sm:text-sm font-semibold tracking-wide">
+        <span id="content-hub-badge-icon">✍️</span> <span id="content-hub-badge-text">Interactive Exemplar</span>
+      </div>
+
+      <h2 id="content-hub-heading" class="text-3xl font-extrabold text-white tracking-tight mb-2">
+        Chapter Practice
+      </h2>
+      <p id="content-hub-subheading" class="text-slate-400 text-xs sm:text-sm max-w-md mb-8">
+        Test your concepts with instant active solution checks.
+      </p>
+
+      <!-- Content Container -->
+      <div id="content-items-wrapper" class="w-full space-y-4 text-left">
+        <!-- Rendered dynamically -->
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Clean Minimalist Footer -->
+  <footer class="border-t border-slate-800/60 py-6 text-center text-xs text-slate-500">
+    © Concept Bhaiya • Designed for focused visual learning
+  </footer>
+
+  <!-- State & Dynamic Logic -->
+  <script>
+    let activeSubject = 'Biology';
+    let activeClass = 11;
+    let activeChemTab = 'physical';
+    let activeChapter = null;
+
+    // 1. Native Web Audio Click Generator
+    let audioCtx = null;
+
+    function playClickSound() {
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.035);
+
+        gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.035);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.035);
+      } catch (err) {
+        console.warn("Audio blocked or not ready:", err);
+      }
+    }
+
+    // 2. Global Click Interceptor
+    document.addEventListener('click', function(e) {
+      const clickable = e.target.closest('button, a, .cursor-pointer');
+      if (clickable) {
+        playClickSound();
+      }
+    }, true);
+
+    // ================= FULL CURRICULUM DATABASE =================
+    const curriculumData = {
+      Biology: {
+        11: [
+          { 
+            id: "01", 
+            title: "The Living World", 
+            icon: "🌱", 
+            isLive: true,
+            episodes: [
+              { ep: "01", title: "What is Living? Characteristics & Defining Features", duration: "32 mins" },
+              { ep: "02", title: "Biodiversity & Need for Classification", duration: "28 mins" },
+              { ep: "03", title: "Nomenclature: Binomial System & ICBN Rules", duration: "35 mins" },
+              { ep: "04", title: "Taxonomic Hierarchy (Species to Kingdom)", duration: "40 mins" },
+              { ep: "05", title: "Taxonomical Aids (Herbarium, Botanical Gardens, Museum, Keys)", duration: "38 mins" }
+            ]
+          },
+          { id: "02", title: "Biological Classification", icon: "🍄", isLive: false },
+          { id: "03", title: "Plant Kingdom", icon: "🌿", isLive: false },
+          { id: "04", title: "Animal Kingdom", icon: "🦁", isLive: false },
+          { id: "05", title: "Morphology of Flowering Plants", icon: "🌸", isLive: false },
+          { id: "06", title: "Anatomy of Flowering Plants", icon: "🔬", isLive: false },
+          { id: "07", title: "Structural Organisation in Animals", icon: "🐸", isLive: false },
+          { id: "08", title: "Cell: The Unit of Life", icon: "🦠", isLive: false },
+          { id: "09", title: "Biomolecules", icon: "🧬", isLive: false },
+          { id: "10", title: "Cell Cycle and Cell Division", icon: "➗", isLive: false },
+          { id: "11", title: "Photosynthesis in Higher Plants", icon: "☀️", isLive: false },
+          { id: "12", title: "Respiration in Plants", icon: "🍃", isLive: false },
+          { id: "13", title: "Plant Growth and Development", icon: "🌾", isLive: false },
+          { id: "14", title: "Breathing and Exchange of Gases", icon: "🫁", isLive: false },
+          { id: "15", title: "Body Fluids and Circulation", icon: "🫀", isLive: false },
+          { id: "16", title: "Excretory Products and their Elimination", icon: "🧪", isLive: false },
+          { id: "17", title: "Locomotion and Movement", icon: "🦴", isLive: false },
+          { id: "18", title: "Neural Control and Coordination", icon: "🧠", isLive: false },
+          { id: "19", title: "Chemical Coordination and Integration", icon: "🩸", isLive: false }
+        ],
+        12: [
+          { id: "01", title: "Sexual Reproduction in Flowering Plants", icon: "🌸", isLive: false },
+          { id: "02", title: "Human Reproduction", icon: "🚹", isLive: false },
+          { id: "03", title: "Reproductive Health", icon: "🩺", isLive: false },
+          { id: "04", title: "Principles of Inheritance and Variation", icon: "🧬", isLive: false },
+          { id: "05", title: "Molecular Basis of Inheritance", icon: "🔬", isLive: false },
+          { id: "06", title: "Evolution", icon: "🦴", isLive: false },
+          { id: "07", title: "Human Health and Disease", icon: "💊", isLive: false },
+          { id: "08", title: "Microbes in Human Welfare", icon: "🧫", isLive: false },
+          { id: "09", title: "Biotechnology: Principles and Processes", icon: "✂️", isLive: false },
+          { id: "10", title: "Biotechnology and its Applications", icon: "💉", isLive: false },
+          { id: "11", title: "Organisms and Populations", icon: "🐾", isLive: false },
+          { id: "12", title: "Ecosystem", icon: "🌿", isLive: false },
+          { id: "13", title: "Biodiversity and Conservation", icon: "🌍", isLive: false }
+        ]
+      },
+      Physics: {
+        11: [
+          { id: "01", title: "Basic Maths", icon: "📐", isLive: false },
+          { id: "02", title: "Vectors", icon: "↗️", isLive: false },
+          { id: "03", title: "Units and Dimensions", icon: "📏", isLive: false },
+          { id: "04", title: "Measuring Instruments", icon: "🔬", isLive: false },
+          { id: "05", title: "Kinematics 1", icon: "🏎️", isLive: false },
+          { id: "06", title: "Kinematics 2", icon: "🏹", isLive: false },
+          { id: "07", title: "Newton's Laws of Motion (NLM)", icon: "⚖️", isLive: false },
+          { id: "08", title: "Friction", icon: "🛞", isLive: false },
+          { id: "09", title: "Work, Power and Energy", icon: "⚡", isLive: false },
+          { id: "10", title: "Circular Motion", icon: "🔄", isLive: false },
+          { id: "11", title: "Centre of Mass", icon: "🎯", isLive: false },
+          { id: "12", title: "Rotational Motion", icon: "🎡", isLive: false },
+          { id: "13", title: "Gravitation", icon: "🪐", isLive: false },
+          { id: "14", title: "Mechanical Properties of Solids", icon: "🧱", isLive: false },
+          { id: "15", title: "Mechanical Properties of Fluids", icon: "💧", isLive: false },
+          { id: "16", title: "Thermal Properties of Matter", icon: "🌡️", isLive: false },
+          { id: "17", title: "Thermodynamics", icon: "🔥", isLive: false },
+          { id: "18", title: "Kinetic Theory of Gases (KTG)", icon: "💨", isLive: false },
+          { id: "19", title: "Oscillations (SHM)", icon: "⏱️", isLive: false },
+          { id: "20", title: "Waves", icon: "🌊", isLive: false }
+        ],
+        12: [
+          { id: "01", title: "Electric Charges and Fields", icon: "⚡", isLive: false },
+          { id: "02", title: "Electrostatic Potential", icon: "🔋", isLive: false },
+          { id: "03", title: "Capacitance", icon: "🧲", isLive: false },
+          { id: "04", title: "Current Electricity", icon: "💡", isLive: false },
+          { id: "05", title: "Moving Charges and Magnetism", icon: "🧭", isLive: false },
+          { id: "06", title: "Magnetism and Matter", icon: "🧲", isLive: false },
+          { id: "07", title: "Electromagnetic Induction (EMI)", icon: "🔌", isLive: false },
+          { id: "08", title: "Alternating Current (AC)", icon: "〰️", isLive: false },
+          { id: "09", title: "Electromagnetic Waves (EM Waves)", icon: "📡", isLive: false },
+          { id: "10", title: "Ray Optics and Optical Instruments", icon: "🔍", isLive: false },
+          { id: "11", title: "Wave Optics", icon: "🌈", isLive: false },
+          { id: "12", title: "Dual Nature of Radiation and Matter", icon: "☀️", isLive: false },
+          { id: "13", title: "Atoms", icon: "⚛️", isLive: false },
+          { id: "14", title: "Nuclei", icon: "💥", isLive: false },
+          { id: "15", title: "Semiconductor Electronics: Materials, Devices and Simple Circuits", icon: "💻", isLive: false },
+          { id: "16", title: "Logic Gates", icon: "🔀", isLive: false }
+        ]
+      },
+      Chemistry: {
+        11: {
+          physical: [
+            { id: "01", title: "Some Basic Concepts of Chemistry", icon: "🧪", isLive: false },
+            { id: "02", title: "Mole Concept", icon: "⚖️", isLive: false },
+            { id: "03", title: "Structure of Atom", icon: "⚛️", isLive: false },
+            { id: "04", title: "Thermodynamics", icon: "🔥", isLive: false },
+            { id: "05", title: "Chemical Equilibrium", icon: "⚖️", isLive: false },
+            { id: "06", title: "Ionic Equilibrium", icon: "💧", isLive: false },
+            { id: "07", title: "Redox Reactions", icon: "⚡", isLive: false }
+          ],
+          inorganic: [
+            { id: "01", title: "Classification of Elements and Periodicity in Properties", icon: "📊", isLive: false },
+            { id: "02", title: "Chemical Bonding and Molecular Structure", icon: "🔗", isLive: false },
+            { id: "03", title: "p-Block Elements", icon: "🧱", isLive: false }
+          ],
+          organic: [
+            { id: "01", title: "Basics of Organic Chemistry (BOC)", icon: "🌱", isLive: false },
+            { id: "02", title: "IUPAC Nomenclature", icon: "🏷️", isLive: false },
+            { id: "03", title: "Isomerism", icon: "🪞", isLive: false },
+            { id: "04", title: "General Organic Chemistry (GOC)", icon: "⚡", isLive: false },
+            { id: "05", title: "Hydrocarbons", icon: "⛽", isLive: false },
+            { id: "06", title: "Separation Techniques", icon: "🧪", isLive: false },
+            { id: "07", title: "Salt Analysis", icon: "🧂", isLive: false }
+          ]
+        },
+        12: {
+          physical: [
+            { id: "01", title: "Solutions", icon: "🧪", isLive: false },
+            { id: "02", title: "Electrochemistry", icon: "🔋", isLive: false },
+            { id: "03", title: "Chemical Kinetics", icon: "⏱️", isLive: false }
+          ],
+          inorganic: [
+            { id: "01", title: "p-Block Elements (Group 15, 16, 17, 18)", icon: "🧱", isLive: false },
+            { id: "02", title: "d and f Block Elements", icon: "🪙", isLive: false },
+            { id: "03", title: "Coordination Compounds", icon: "💎", isLive: false }
+          ],
+          organic: [
+            { id: "01", title: "Haloalkanes and Haloarenes", icon: "⚗️", isLive: false },
+            { id: "02", title: "Alcohols, Phenols and Ethers", icon: "🍷", isLive: false },
+            { id: "03", title: "Aldehydes, Ketones and Carboxylic Acids", icon: "🧪", isLive: false },
+            { id: "04", title: "Amines", icon: "🧬", isLive: false },
+            { id: "05", title: "Biomolecules", icon: "🍬", isLive: false }
+          ]
+        }
+      }
+    };
+
+    // Screen Routing Controller
+    function showScreen(screenId) {
+      const screens = ['hero-screen', 'subjects-screen', 'class-screen', 'chapters-screen', 'chapter-dashboard-screen', 'lecture-hub-screen', 'content-display-screen'];
+      screens.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.classList.add('hidden');
+          el.classList.remove('flex', 'screen-enter');
+        }
+      });
+
+      const activeEl = document.getElementById(screenId);
+      if (activeEl) {
+        activeEl.classList.remove('hidden');
+        activeEl.classList.add('flex');
+        void activeEl.offsetWidth;
+        activeEl.classList.add('screen-enter');
+      }
+
+      // Update Navigation styling
+      const navHome = document.getElementById('nav-home');
+      const navSubjects = document.getElementById('nav-subjects');
+
+      if (screenId === 'hero-screen') {
+        if (navHome) { navHome.classList.add('text-amber-400'); navHome.classList.remove('text-slate-300'); }
+        if (navSubjects) { navSubjects.classList.remove('text-amber-400'); }
+      } else {
+        if (navHome) { navHome.classList.remove('text-amber-400'); navHome.classList.add('text-slate-300'); }
+        if (navSubjects) { navSubjects.classList.add('text-amber-400'); }
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openSubject(subject) {
+      activeSubject = subject;
+      const icons = { 'Biology': '🧬', 'Chemistry': '🧪', 'Physics': '⚡' };
+      
+      document.getElementById('current-subject-icon').innerText = icons[subject] || '📚';
+      document.getElementById('current-subject-pill').innerText = subject;
+      document.getElementById('current-subject-title').innerText = subject;
+      document.querySelectorAll('.subject-display-name').forEach(el => el.innerText = subject);
+
+      if (subject === 'Biology') {
+        document.getElementById('class-11-count').innerText = "Explore 19 Chapters";
+        document.getElementById('class-12-count').innerText = "Explore 13 Chapters";
+      } else if (subject === 'Physics') {
+        document.getElementById('class-11-count').innerText = "Explore 20 Chapters";
+        document.getElementById('class-12-count').innerText = "Explore 16 Chapters";
+      } else if (subject === 'Chemistry') {
+        document.getElementById('class-11-count').innerText = "Physical • Inorganic • Organic";
+        document.getElementById('class-12-count').innerText = "Physical • Inorganic • Organic";
+      }
+
+      showScreen('class-screen');
+    }
+
+    function selectClass(grade) {
+      activeClass = grade;
+      activeChemTab = 'physical';
+      renderChapters();
+      showScreen('chapters-screen');
+    }
+
+    function setChemTab(tabName) {
+      activeChemTab = tabName;
+      
+      const tabs = ['physical', 'inorganic', 'organic'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-${t}`);
+        if (t === tabName) {
+          btn.className = "flex-1 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-amber-400 text-slate-950 shadow-md";
+        } else {
+          btn.className = "flex-1 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-all";
+        }
+      });
+
+      renderChapters();
+    }
+
+    function renderChapters() {
+      const container = document.getElementById('chapters-list-container');
+      const chemTabsBar = document.getElementById('chem-tabs-bar');
+      const pill = document.getElementById('chapter-view-pill');
+      const icon = document.getElementById('chapter-view-icon');
+      const title = document.getElementById('chapter-view-title');
+      const highlight = document.getElementById('chapter-view-highlight');
+
+      const icons = { 'Biology': '🧬', 'Chemistry': '🧪', 'Physics': '⚡' };
+      icon.innerText = icons[activeSubject] || '📘';
+      pill.innerText = `Class ${activeClass} ${activeSubject}`;
+      title.innerText = `Class ${activeClass}`;
+      highlight.innerText = activeSubject;
+
+      if (activeSubject === 'Chemistry') {
+        chemTabsBar.classList.remove('hidden');
+      } else {
+        chemTabsBar.classList.add('hidden');
+      }
+
+      let chapters = [];
+      if (activeSubject === 'Chemistry') {
+        chapters = curriculumData.Chemistry[activeClass][activeChemTab] || [];
+      } else {
+        chapters = curriculumData[activeSubject][activeClass] || [];
+      }
+
+      container.innerHTML = '';
+
+      chapters.forEach((ch, idx) => {
+        const row = document.createElement('div');
+        row.style.animationDelay = `${idx * 0.025}s`;
+        
+        const isLive = ch.isLive;
+        const borderClass = isLive 
+          ? 'border-amber-400/60 bg-slate-900/90 shadow-lg shadow-amber-500/10' 
+          : 'border-slate-800/80 bg-slate-900/50 hover:border-slate-700';
+
+        row.className = `chapter-row group relative w-full p-4 sm:p-5 rounded-2xl sm:rounded-3xl border ${borderClass} hover:border-amber-400/70 transition-all duration-200 cursor-pointer flex items-center justify-between text-left active:scale-[0.99]`;
+        
+        row.onclick = () => openChapterDashboard(ch);
+
+        const badgeHtml = isLive 
+          ? `<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-xs font-bold tracking-wide uppercase shadow-sm"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Live</span>`
+          : `<span class="px-2.5 py-1 rounded-full bg-slate-800/80 border border-slate-700/60 text-slate-400 text-xs font-medium">Coming Soon</span>`;
+
+        row.innerHTML = `
+          <div class="flex items-center gap-3.5 sm:gap-5 min-w-0 pr-3">
+            <span class="font-extrabold text-base sm:text-lg text-amber-400/90 w-7 flex-shrink-0">${ch.id}</span>
+            <div class="w-10 h-10 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-lg group-hover:scale-105 transition-transform flex-shrink-0">${ch.icon}</div>
+            <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-amber-300 transition-colors truncate sm:whitespace-normal">
+              ${ch.title}
+            </h3>
+          </div>
+          <div class="flex-shrink-0 flex items-center gap-3">
+            ${badgeHtml}
+            <span class="text-slate-500 group-hover:text-amber-400 group-hover:translate-x-1 transition-all text-sm font-semibold hidden sm:inline">→</span>
+          </div>
+        `;
+
+        container.appendChild(row);
+      });
+    }
+
+    // ================= CHAPTER RESOURCE DASHBOARD CONTROLLER =================
+    function openChapterDashboard(chapter) {
+      activeChapter = chapter;
+      
+      document.getElementById('dash-ch-code').innerText = `CH ${chapter.id}`;
+      document.getElementById('dash-ch-subject').innerText = activeSubject;
+      document.getElementById('dash-ch-title').innerText = chapter.title;
+      document.getElementById('dash-ch-icon').innerText = chapter.icon || '📖';
+
+      // Configure Dynamic 5th Resource Hub (Forget Points / Formula Sheet / Crisps)
+      const specialTitle = document.getElementById('special-hub-title');
+      const specialDesc = document.getElementById('special-hub-desc');
+      const specialIcon = document.getElementById('special-hub-icon');
+
+      if (activeSubject === 'Biology') {
+        specialTitle.innerText = "Forget Points Hub";
+        specialDesc.innerText = "High-yield facts, exceptions & NCERT memory traps";
+        specialIcon.innerText = "🧠";
+      } else if (activeSubject === 'Physics') {
+        specialTitle.innerText = "Formula Sheet Hub";
+        specialDesc.innerText = "All formulas, dimensional units & derivations wall";
+        specialIcon.innerText = "📐";
+      } else if (activeSubject === 'Chemistry') {
+        if (activeChemTab === 'inorganic') {
+          specialTitle.innerText = "Forget Points Hub";
+          specialDesc.innerText = "Colors, trends, exceptions & oxidation state traps";
+          specialIcon.innerText = "🧪";
+        } else if (activeChemTab === 'organic') {
+          specialTitle.innerText = "Chapter Crisps & Summaries";
+          specialDesc.innerText = "Name reactions, reagents & mechanism flowcharts";
+          specialIcon.innerText = "⚡";
+        } else {
+          specialTitle.innerText = "Formula Sheet Hub";
+          specialDesc.innerText = "Physical formulas, constants & law equations";
+          specialIcon.innerText = "📏";
+        }
+      }
+
+      showScreen('chapter-dashboard-screen');
+    }
+
+    // ================= 1. LECTURE HUB & EPISODE SYSTEM =================
+    function openLectureHub() {
+      document.getElementById('lecture-hub-chapter-title').innerText = `${activeChapter.id}. ${activeChapter.title}`;
+      setLectureTrack('oneshot');
+      renderEpisodes();
+      showScreen('lecture-hub-screen');
+    }
+
+    function setLectureTrack(track) {
+      const oneshotView = document.getElementById('oneshot-track-view');
+      const episodesView = document.getElementById('episodes-track-view');
+      const oneshotBtn = document.getElementById('track-oneshot-btn');
+      const episodesBtn = document.getElementById('track-episodes-btn');
+
+      if (track === 'oneshot') {
+        oneshotView.classList.remove('hidden');
+        episodesView.classList.add('hidden');
+        oneshotBtn.className = "flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-amber-400 text-slate-950 shadow-md";
+        episodesBtn.className = "flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-all";
+      } else {
+        oneshotView.classList.add('hidden');
+        episodesView.classList.remove('hidden');
+        episodesBtn.className = "flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-amber-400 text-slate-950 shadow-md";
+        oneshotBtn.className = "flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-all";
+      }
+    }
+
+    function renderEpisodes() {
+      const container = document.getElementById('episodes-list-container');
+      const countLabel = document.getElementById('episodes-total-count');
+
+      // Sample fallback episodes if chapter doesn't have custom ones yet
+      const episodeList = activeChapter.episodes || [
+        { ep: "01", title: "Introduction, Scope & Fundamental Laws", duration: "35 mins" },
+        { ep: "02", title: "Core Concepts & Visual Frameworks", duration: "42 mins" },
+        { ep: "03", title: "Detailed Derivations & Analytical Breakdown", duration: "39 mins" },
+        { ep: "04", title: "High-Yield Numerical Applications & Tricks", duration: "45 mins" }
+      ];
+
+      countLabel.innerText = `${episodeList.length} Episodes Available`;
+      container.innerHTML = '';
+
+      episodeList.forEach((ep) => {
+        const epCard = document.createElement('div');
+        epCard.className = "p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition flex flex-col gap-3";
+
+        epCard.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/20 text-amber-400 font-extrabold text-xs flex items-center justify-center flex-shrink-0">
+                E${ep.ep}
+              </span>
+              <div>
+                <h4 class="text-sm sm:text-base font-bold text-white leading-snug">${ep.title}</h4>
+                <span class="text-xs text-slate-500 font-medium">${ep.duration}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Per-Episode Dedicated Actions -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-3 border-t border-slate-800/80">
+            <button onclick="alert('Watching Episode ${ep.ep} on YouTube...')" class="py-2 px-3 rounded-xl bg-slate-800/80 hover:bg-amber-400 hover:text-slate-950 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95">
+              <span>▶ Watch Lecture</span>
+            </button>
+            <button onclick="alert('Downloading Notes for Episode ${ep.ep}...')" class="py-2 px-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95">
+              <span>📄 Download Notes</span>
+            </button>
+            <button onclick="alert('Downloading DPP for Episode ${ep.ep}...')" class="py-2 px-3 rounded-xl bg-slate-800/80 hover:bg-emerald-500 hover:text-slate-950 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95">
+              <span>📝 Episode DPP</span>
+            </button>
+          </div>
+        `;
+
+        container.appendChild(epCard);
+      });
+    }
+
+    // ================= 2. NCERT HUB =================
+    function openNcertHub() {
+      if (confirm(`Open official NCERT textbook PDF for ${activeChapter.title} on ncert.nic.in?`)) {
+        window.open('https://ncert.nic.in/textbook.php', '_blank');
+      }
+    }
+
+    // ================= 3. NCERT EXEMPLAR HUB =================
+    function openExemplarHub() {
+      setupContentHub(
+        '✍️', 
+        'NCERT Exemplar Practice', 
+        `${activeChapter.title} • Exemplar Problems`, 
+        'Tap options to deliberate, then reveal the step-by-step Concept Bhaiya solution.'
+      );
+
+      const wrapper = document.getElementById('content-items-wrapper');
+      wrapper.innerHTML = `
+        <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 mb-4 text-left">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-bold text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2.5 py-1 rounded-md uppercase tracking-wider">
+              NCERT Exemplar • Q1
+            </span>
+            <span class="text-xs text-slate-500 font-medium">NEET High-Yield</span>
+          </div>
+
+          <p class="text-sm sm:text-base text-slate-200 font-medium leading-relaxed mb-4">
+            Which of the following is considered as a defining property of living organisms, without exception?
+          </p>
+
+          <div class="space-y-3 mb-5 text-sm text-slate-300">
+            <div class="p-3 rounded-xl bg-slate-950/50 border border-slate-800/80 hover:border-amber-400/40 cursor-pointer transition">
+              (A) Growth from inside and outside
+            </div>
+            
+            <div class="p-3 rounded-xl bg-slate-950/50 border border-slate-800/80 hover:border-amber-400/40 cursor-pointer transition">
+              (B) Reproduction
+            </div>
+            
+            <div class="p-3 rounded-xl bg-slate-950/50 border border-slate-800/80 hover:border-amber-400/40 cursor-pointer transition">
+              (C) Cellular Organisation of the body
+            </div>
+            
+            <div class="p-3 rounded-xl bg-slate-950/50 border border-slate-800/80 hover:border-amber-400/40 cursor-pointer transition">
+              (D) Increase in body mass
+            </div>
+          </div>
+
+          <button onclick="toggleSolution('sol-1')" class="px-4 py-2 bg-slate-800 hover:bg-amber-400 hover:text-slate-950 text-slate-300 font-bold text-xs rounded-xl transition duration-150 flex items-center justify-center gap-2 cursor-pointer active:scale-95">
+            <span>View Solution</span>
+            <span id="arrow-sol-1">↓</span>
+          </button>
+
+          <div id="sol-1" class="hidden mt-4 pt-4 border-t border-slate-800/80 text-sm leading-relaxed text-slate-300">
+            <div class="p-4 rounded-xl bg-slate-950/80 border border-amber-400/30">
+              <span class="text-xs font-bold text-emerald-400 block mb-2">✓ Correct Answer: (C) Cellular Organisation</span>
+              <p class="text-xs text-slate-300 leading-relaxed mb-2">
+                <strong>Concept Breakdown:</strong> Cellular organisation of the body is the defining feature of life forms without any exception. Non-living objects do not possess cellular structure.
+              </p>
+              <p class="text-xs text-amber-300 italic">
+                💡 <strong>Concept Bhaiya Trap Alert:</strong> Reproduction cannot be an all-inclusive defining characteristic because sterile worker bees, mules, and infertile human couples cannot reproduce.
+              </p>
+            </div>
+          </div>
+        </div>
+      `;
+
+      showScreen('content-display-screen');
+    }
+
+    // ================= 4. ALL PYQS HUB (1988–PRESENT) =================
+    function openPyqHub() {
+      setupContentHub(
+        '🎯', 
+        'All PYQs (1988 – Present)', 
+        `${activeChapter.title} • Previous Years Questions`, 
+        'Every single question asked in AIPMT/NEET from 1988 to present, solved with shortcuts.'
+      );
+
+      const wrapper = document.getElementById('content-items-wrapper');
+      wrapper.innerHTML = `
+        <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 mb-4 text-left">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-bold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2.5 py-1 rounded-md uppercase tracking-wider">
+              NEET 2021 • PYQ
+            </span>
+            <span class="text-xs text-slate-500 font-medium">Topic: Nomenclature</span>
+          </div>
+
+          <p class="text-sm sm:text-base text-slate-200 font-medium leading-relaxed mb-4">
+            Which one of the following belongs to the family Muscidae?
+          </p>
+
+          <div class="space-y-3 mb-5 text-sm text-slate-300">
+            <div class="p-3 rounded-xl bg-slate-950/50 border border-slate-800/80 hover:border-amber-400/40 cursor-pointer transition">
+              (A) Grasshopper
+            </div>
+            
+            <div class="p-3 rounded-xl bg-slate-950/50 border border-slate-800/80 hover:border-amber-400/40 cursor-pointer transition">
+              (B) Housefly
+            </div>
+            
+            <div class="p-3 rounded-xl bg-slate-950/50 border border-slate-800/80 hover:border-amber-400/40 cursor-pointer transition">
+              (C) Firefly
+            </div>
+            
+            <div class="p-3 rounded-xl bg-slate-950/50 border border-slate-800/80 hover:border-amber-400/40 cursor-pointer transition">
+              (D) Cockroach
+            </div>
+          </div>
+
+          <button onclick="toggleSolution('pyq-sol-1')" class="px-4 py-2 bg-slate-800 hover:bg-amber-400 hover:text-slate-950 text-slate-300 font-bold text-xs rounded-xl transition duration-150 flex items-center justify-center gap-2 cursor-pointer active:scale-95">
+            <span>View Solution</span>
+            <span id="arrow-pyq-sol-1">↓</span>
+          </button>
+
+          <div id="pyq-sol-1" class="hidden mt-4 pt-4 border-t border-slate-800/80 text-sm leading-relaxed text-slate-300">
+            <div class="p-4 rounded-xl bg-slate-950/80 border border-emerald-400/30">
+              <span class="text-xs font-bold text-emerald-400 block mb-2">✓ Correct Answer: (B) Housefly</span>
+              <p class="text-xs text-slate-300 leading-relaxed mb-2">
+                Housefly (<em>Musca domestica</em>):<br>
+                • Phylum: Arthropoda<br>
+                • Class: Insecta<br>
+                • Order: Diptera<br>
+                • <strong>Family: Muscidae</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      `;
+
+      showScreen('content-display-screen');
+    }
+
+    // ================= 5. SPECIAL HUB (FORGET POINTS / FORMULA SHEET / CRISPS) =================
+    function openSpecialHub() {
+      let icon = "🧠";
+      let badge = "Forget Points";
+      let title = `${activeChapter.title} • High-Yield Forget Points`;
+      let desc = "Carefully curated traps and easy-to-forget NCERT lines.";
+
+      if (activeSubject === 'Physics' || (activeSubject === 'Chemistry' && activeChemTab === 'physical')) {
+        icon = "📐";
+        badge = "Formula Sheet";
+        title = `${activeChapter.title} • Formula Wall`;
+        desc = "Formulas, dimension constants, and sign conventions.";
+      } else if (activeSubject === 'Chemistry' && activeChemTab === 'organic') {
+        icon = "⚡";
+        badge = "Chapter Crisps";
+        title = `${activeChapter.title} • Reaction Flowchart`;
+        desc = "Reagents, named reactions, and conversion maps.";
+      }
+
+      setupContentHub(icon, badge, title, desc);
+
+      const wrapper = document.getElementById('content-items-wrapper');
+      wrapper.innerHTML = `
+        <div class="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">
+          <div class="flex items-center gap-2 text-amber-400 font-bold text-sm">
+            <span>⚡ High-Priority Revision Summary</span>
+          </div>
+          <ul class="space-y-3 text-xs sm:text-sm text-slate-300 list-disc list-inside leading-relaxed">
+            <li><strong class="text-white">Herbarium specimens:</strong> Standard sheet size is 41 × 29 cm (16.5 × 11.5 inches). Dried, pressed & preserved on sheets.</li>
+            <li><strong class="text-white">Herbarium labels:</strong> Do NOT carry the height of the plant. They carry date/place of collection, collector's name, local & scientific names, family.</li>
+            <li><strong class="text-white">Key:</strong> Analytical in nature, based on contrasting characters in a pair called a <em>couplet</em>. Each statement in a key is called a <em>lead</em>.</li>
+            <li><strong class="text-white">Flora vs Manual:</strong> Flora contains the actual account of habitat and distribution of plants of a given area. Manuals provide information for identification of names of species found in an area.</li>
+          </ul>
+        </div>
+      `;
+
+      showScreen('content-display-screen');
+    }
+
+    // ================= 6. FLASHCARDS HUB =================
+    function openFlashcardsHub() {
+      setupContentHub(
+        '🗂️', 
+        'Digital Flashcards', 
+        `${activeChapter.title} • Active Recall Deck`, 
+        'Tap any card to flip between Question and Answer.'
+      );
+
+      const wrapper = document.getElementById('content-items-wrapper');
+      wrapper.innerHTML = `
+        <div class="w-full flex flex-col items-center gap-4">
+          <div onclick="flipCard(this)" class="w-full h-56 p-6 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-950 border border-amber-400/40 shadow-xl flex flex-col justify-between cursor-pointer active:scale-[0.99] transition-all">
+            <div class="flex items-center justify-between text-xs text-slate-400 font-semibold uppercase tracking-wider">
+              <span>Card 1 of 12</span>
+              <span class="text-amber-400">Tap to Flip 🔄</span>
+            </div>
+            
+            <div class="text-center my-auto">
+              <p class="card-front text-base sm:text-lg font-bold text-white leading-relaxed">
+                What are the twin characteristics of growth according to NCERT?
+              </p>
+              <p class="card-back hidden text-sm sm:text-base font-semibold text-emerald-400 leading-relaxed">
+                1. Increase in mass<br>2. Increase in number of individuals
+              </p>
+            </div>
+
+            <div class="text-center text-[11px] text-slate-500 font-medium">
+              Concept Bhaiya Flashcards
+            </div>
+          </div>
+        </div>
+      `;
+
+      showScreen('content-display-screen');
+    }
+
+    function flipCard(cardEl) {
+      const front = cardEl.querySelector('.card-front');
+      const back = cardEl.querySelector('.card-back');
+      if (front.classList.contains('hidden')) {
+        front.classList.remove('hidden');
+        back.classList.add('hidden');
+      } else {
+        front.classList.add('hidden');
+        back.classList.remove('hidden');
+      }
+    }
+
+    // Helper: Configure Content Screen Header
+    function setupContentHub(icon, badge, heading, subheading) {
+      document.getElementById('content-hub-badge-icon').innerText = icon;
+      document.getElementById('content-hub-badge-text').innerText = badge;
+      document.getElementById('content-hub-heading').innerText = heading;
+      document.getElementById('content-hub-subheading').innerText = subheading;
+    }
+
+    // Interactive Solution Accordion
+    function toggleSolution(id) {
+      const el = document.getElementById(id);
+      const arrow = document.getElementById('arrow-' + id);
+      if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+        if (arrow) arrow.innerText = '↑';
+      } else {
+        el.classList.add('hidden');
+        if (arrow) arrow.innerText = '↓';
+      }
+    }
+  </script>
+
+</body>
+</html>
