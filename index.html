@@ -1203,30 +1203,7 @@
         'Tap any card to flip between Question and Answer.'
       );
 
-      const wrapper = document.getElementById('content-items-wrapper');
-      wrapper.innerHTML = `
-        <div class="w-full flex flex-col items-center gap-4">
-          <div onclick="flipCard(this)" class="w-full h-56 p-6 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-950 border border-amber-400/40 shadow-xl flex flex-col justify-between cursor-pointer active:scale-[0.99] transition-all">
-            <div class="flex items-center justify-between text-xs text-slate-400 font-semibold uppercase tracking-wider">
-              <span>Card 1 of 12</span>
-              <span class="text-amber-400">Tap to Flip 🔄</span>
-            </div>
-            
-            <div class="text-center my-auto">
-              <p class="card-front text-base sm:text-lg font-bold text-white leading-relaxed">
-                What are the twin characteristics of growth according to NCERT?
-              </p>
-              <p class="card-back hidden text-sm sm:text-base font-semibold text-emerald-400 leading-relaxed">
-                1. Increase in mass<br>2. Increase in number of individuals
-              </p>
-            </div>
-
-            <div class="text-center text-[11px] text-slate-500 font-medium">
-              Concept Bhaiya Flashcards
-            </div>
-          </div>
-        </div>
-      `;
+      openFlashcardHub('cellFlashcards', 'Cell: The Unit of Life');
 
       showScreen('content-display-screen');
     }
