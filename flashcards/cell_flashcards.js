@@ -183,7 +183,29 @@ window.cellFlashcards = [
   { id: 182, q: "Genetic material of eukaryotes is organised into _____.", a: "Chromosomes" },
   { id: 183, q: "All eukaryotic cells are identical. (True/False)", a: "False" },
   { id: 184, q: "Present in plant cells but absent in animal cells: _____, _____ and _____.", a: "Cell walls, plastids, a large central vacuole" },
-  { id: 185, q: "Present in animal cells but absent in almost all plant cells = _____.", a: "Centrioles" }
+  { id: 185, q: "Present in animal cells but absent in almost all plant cells = _____.", a: "Centrioles" },
+    { id: 186, q: "Detailed structure of the cell membrane was studied only after the advent of the _____.", a: "Electron microscope" },
+  { id: 187, q: "Detailed membrane structure was studied after the advent of the electron microscope in the _____.", a: "1950s" },
+  { id: 188, q: "Chemical studies on the cell membrane, especially in _____, helped deduce its possible structure.", a: "Human red blood cells (RBCs)" },
+  { id: 189, q: "Cell membrane is mainly composed of _____ and _____.", a: "Lipids and proteins" },
+  { id: 190, q: "Major lipids of the cell membrane = _____.", a: "Phospholipids" },
+  { id: 191, q: "Phospholipids are arranged in a _____.", a: "Bilayer" },
+  { id: 192, q: "Polar heads of membrane lipids face the _____.", a: "Outer sides" },
+  { id: 193, q: "Hydrophobic tails of membrane lipids face the _____.", a: "Inner part" },
+  { id: 194, q: "Non-polar tails of saturated hydrocarbons are protected from the _____.", a: "Aqueous environment" },
+  { id: 195, q: "In addition to phospholipids, the membrane also contains _____.", a: "Cholesterol" },
+  { id: 196, q: "Cell membranes also possess _____ and _____.", a: "Proteins and carbohydrates" },
+  { id: 197, q: "The ratio of _____ and _____ varies considerably in different cell types.", a: "Protein and lipid" },
+  { id: 198, q: "Human erythrocyte membrane: approximate percentage of protein = _____.", a: "52%" },
+  { id: 199, q: "Human erythrocyte membrane: approximate percentage of lipids = _____.", a: "40%" },
+  { id: 200, q: "Classification of membrane proteins depends on the _____.", a: "Ease of extraction" },
+  { id: 201, q: "Membrane proteins are classified into _____ and _____.", a: "Integral and peripheral" },
+  { id: 202, q: "Proteins that lie on the surface of the membrane = _____.", a: "Peripheral proteins" },
+  { id: 203, q: "Proteins partially or totally buried in the membrane = _____.", a: "Integral proteins" },
+  { id: 204, q: "Polar head = _____. (Hydrophobic/Hydrophilic)", a: "Hydrophilic" },
+  { id: 205, q: "Hydrophobic tails = _____. (Polar/Non-polar)", a: "Non-polar" },
+  { id: 206, q: "Erythrocyte is also known as _____.", a: "Red blood cell" },
+
 
 
 ];
