@@ -1203,7 +1203,25 @@
         'Tap any card to flip between Question and Answer.'
       );
 
-      openFlashcardHub('cellFlashcards', 'Cell: The Unit of Life');
+        const deckKey = activeChapter.id + '_flashcards';
+  const deckData = window[deckKey] || window.cellFlashcards;
+  
+  if (deckData && deckData.length > 0) {
+    openFlashcardHub(deckKey, activeChapter.title);
+  } else {
+    const wrapper = document.getElementById('content-items-wrapper');
+    if (wrapper) {
+      wrapper.innerHTML = `
+        <div class="max-w-md mx-auto text-center py-16 px-4">
+          <div class="text-4xl mb-3"></div>
+          <h3 class="text-lg font-bold text-white mb-2">${activeChapter.title}</h3>
+          <p class="text-xs text-slate-400 mb-4">Flashcards for this chapter are currently being prepared.</p>
+          <span class="inline-block px-3 py-1 bg-slate-800 text-amber-400 border border-slate-700 rounded-lg text-[11px] font-semibold">Coming Soon</span>
+        </div>
+      `;
+    }
+  }
+
 
       showScreen('content-display-screen');
     }
@@ -1249,8 +1267,9 @@ let cardFlipped = false;
 let bookmarkedIds = JSON.parse(localStorage.getItem('cb_bookmarks') || '[]');
 let filterOnlyBookmarks = false;
 
-function openFlashcardHub(deckName = 'cellFlashcards', chapterTitle = "Cell: The Unit of Life") {
-  const cards = window[deckName] || [];
+function openFlashcardHub(deckName = 'cellFlashcards', chapterTitle = "Flashcards") {
+  const cards = window[deckName] || window.cellFlashcards || [];
+
   const wrapper = document.getElementById('content-items-wrapper');
   if (!wrapper) return;
 
