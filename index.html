@@ -1264,6 +1264,194 @@
       }
     }
   </script>
+  <script src="flashcards/cell_flashcards.js"></script>
+<script>
+let currentDeck = [];
+let activeCardIdx = 0;
+let cardFlipped = false;
+let bookmarkedIds = JSON.parse(localStorage.getItem('cb_bookmarks') || '[]');
+let filterOnlyBookmarks = false;
+
+function openFlashcardHub(deckName = 'cellFlashcards', chapterTitle = "Cell: The Unit of Life") {
+  const cards = window[deckName] || [];
+  const wrapper = document.getElementById('content-items-wrapper');
+  if (!wrapper) return;
+
+  function updateActiveDeck() {
+    if (filterOnlyBookmarks) {
+      currentDeck = cards.filter(c => bookmarkedIds.includes(c.id));
+    } else {
+      currentDeck = [...cards];
+    }
+    if (activeCardIdx >= currentDeck.length) {
+      activeCardIdx = Math.max(0, currentDeck.length - 1);
+    }
+    cardFlipped = false;
+  }
+
+  function renderView() {
+    updateActiveDeck();
+
+    if (currentDeck.length === 0) {
+      wrapper.innerHTML = `
+        <div class="max-w-md mx-auto text-center py-12 px-4">
+          <div class="text-4xl mb-3">⭐</div>
+          <h3 class="text-lg font-bold text-white mb-2">No Bookmarked Cards Yet</h3>
+          <p class="text-xs text-slate-400 mb-6">Star cards while practicing to revise high-yield points separately.</p>
+          <button onclick="toggleBookmarkFilter()" class="py-2 px-5 bg-amber-400 text-slate-950 font-bold rounded-xl text-xs hover:bg-amber-300">
+            Show All Cards
+          </button>
+        </div>
+      `;
+      return;
+    }
+
+    const card = currentDeck[activeCardIdx];
+    const isBookmarked = bookmarkedIds.includes(card.id);
+
+    wrapper.innerHTML = `
+      <div class="max-w-lg mx-auto px-4 py-4 select-none">
+        
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <span class="text-[11px] font-bold text-amber-400 uppercase tracking-widest block">${chapterTitle}</span>
+            <span class="text-xs text-slate-400 font-medium">Card ${activeCardIdx + 1} of ${currentDeck.length}</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="toggleBookmarkFilter()" 
+                    class="py-1.5 px-3 rounded-lg text-xs font-bold border transition ${filterOnlyBookmarks ? 'bg-amber-400 text-slate-950 border-amber-400' : 'bg-slate-800 text-slate-300 border-slate-700 hover:border-slate-500'}">
+              ★ ${filterOnlyBookmarks ? 'Showing Starred' : 'All Cards'}
+            </button>
+            <button onclick="shuffleDeck()" title="Shuffle Deck"
+                    class="p-1.5 rounded-lg text-xs bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700">
+              🔀
+            </button>
+          </div>
+        </div>
+
+        <div class="perspective-1000 w-full min-h-[260px] cursor-pointer" onclick="flipCard()">
+          <div id="cardInner" 
+               class="relative w-full min-h-[260px] rounded-2xl transform-style-3d transition-transform duration-500 ${cardFlipped ? 'rotate-y-180' : ''}">
+            
+            <!-- FRONT: Question -->
+            <div class="absolute inset-0 backface-hidden w-full h-full p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between shadow-2xl">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] uppercase font-bold tracking-wider text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded-md">Question</span>
+                <button onclick="event.stopPropagation(); toggleBookmark(${card.id})" 
+                        class="text-lg transition ${isBookmarked ? 'text-amber-400 scale-110' : 'text-slate-600 hover:text-slate-400'}">
+                  ${isBookmarked ? '★' : '☆'}
+                </button>
+              </div>
+
+              <div class="py-4 text-center">
+                <p class="text-base sm:text-lg font-bold text-white leading-relaxed">${card.q}</p>
+              </div>
+
+              <div class="text-center text-[11px] font-medium text-slate-500">
+                Tap anywhere to reveal answer ⟲
+              </div>
+            </div>
+
+            <!-- BACK: Answer -->
+            <div class="absolute inset-0 backface-hidden rotate-y-180 w-full h-full p-6 rounded-2xl bg-gradient-to-br from-slate-900 to-amber-950/30 border border-amber-400/40 flex flex-col justify-between shadow-2xl">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] uppercase font-bold tracking-wider text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-md">Answer</span>
+                <button onclick="event.stopPropagation(); toggleBookmark(${card.id})" 
+                        class="text-lg transition ${isBookmarked ? 'text-amber-400 scale-110' : 'text-slate-600 hover:text-slate-400'}">
+                  ${isBookmarked ? '★' : '☆'}
+                </button>
+              </div>
+
+              <div class="py-4 text-center">
+                <p class="text-base sm:text-xl font-bold text-amber-300 leading-relaxed">${card.a}</p>
+              </div>
+
+              <div class="text-center text-[11px] font-medium text-slate-500">
+                Tap anywhere to see question ⟲
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 mt-4">
+          <button onclick="prevCard()" ${activeCardIdx === 0 ? 'disabled' : ''} 
+                  class="py-2.5 px-3 rounded-xl font-bold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 disabled:opacity-30 disabled:pointer-events-none transition active:scale-95 flex items-center justify-center gap-1">
+            <span>←</span> Previous
+          </button>
+
+          <button onclick="flipCard()" 
+                  class="py-2.5 px-3 rounded-xl font-bold text-xs bg-amber-400 text-slate-950 hover:bg-amber-300 transition active:scale-95 flex items-center justify-center gap-1 shadow-md shadow-amber-400/20">
+            Flip 🔄
+          </button>
+
+          <button onclick="nextCard()" ${activeCardIdx === currentDeck.length - 1 ? 'disabled' : ''} 
+                  class="py-2.5 px-3 rounded-xl font-bold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 disabled:opacity-30 disabled:pointer-events-none transition active:scale-95 flex items-center justify-center gap-1">
+            Next <span>→</span>
+          </button>
+        </div>
+
+      </div>
+    `;
+  }
+
+  window.flipCard = function() {
+    cardFlipped = !cardFlipped;
+    const inner = document.getElementById('cardInner');
+    if (inner) {
+      if (cardFlipped) inner.classList.add('rotate-y-180');
+      else inner.classList.remove('rotate-y-180');
+    }
+  };
+
+  window.nextCard = function() {
+    if (activeCardIdx < currentDeck.length - 1) {
+      activeCardIdx++;
+      cardFlipped = false;
+      renderView();
+    }
+  };
+
+  window.prevCard = function() {
+    if (activeCardIdx > 0) {
+      activeCardIdx--;
+      cardFlipped = false;
+      renderView();
+    }
+  };
+
+  window.toggleBookmark = function(id) {
+    if (bookmarkedIds.includes(id)) {
+      bookmarkedIds = bookmarkedIds.filter(bId => bId !== id);
+    } else {
+      bookmarkedIds.push(id);
+    }
+    localStorage.setItem('cb_bookmarks', JSON.stringify(bookmarkedIds));
+    renderView();
+  };
+
+  window.toggleBookmarkFilter = function() {
+    filterOnlyBookmarks = !filterOnlyBookmarks;
+    activeCardIdx = 0;
+    renderView();
+  };
+
+  window.shuffleDeck = function() {
+    for (let i = currentDeck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [currentDeck[i], currentDeck[j]] = [currentDeck[j], currentDeck[i]];
+    }
+    activeCardIdx = 0;
+    cardFlipped = false;
+    renderView();
+  };
+
+  showScreen('content-display-screen');
+  renderView();
+}
+</script>
+
 
 </body>
 </html>
