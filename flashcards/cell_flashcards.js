@@ -142,6 +142,5 @@ window.cellFlashcards = [
   { id: 141, q: "Mesosome extensions are in the form of _____, _____ and _____.", a: "Vesicles, tubules and lamellae" }
 
 
-
 ];
 
