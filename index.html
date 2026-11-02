@@ -1237,8 +1237,9 @@
         'Tap any card to flip between Question and Answer.'
       );
 
-      const deckKey = activeChapter.id + '_flashcards';
-      const deckData = window[deckKey] || window.cellFlashcards;
+      let deckKey = activeChapter.id === "01" ? 'livingWorldFlashcards' : 'cellFlashcards';
+let deckData = activeChapter.id === "01" ? window.livingWorldFlashcards : (window[deckKey] || window.cellFlashcards);
+
       
       if (deckData && deckData.length > 0) {
         openFlashcardHub(deckKey, activeChapter.title);
@@ -1294,6 +1295,8 @@
   </script>
 
   <script src="flashcards/cell_flashcards.js"></script>
+  <script src="flashcards/living_world_flashcards.js"></script>
+
   <script>
     let currentDeck = [];
     let playOrder = [];
