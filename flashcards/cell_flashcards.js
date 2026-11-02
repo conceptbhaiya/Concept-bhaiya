@@ -501,8 +501,12 @@ window.cellFlashcards = [
   { id: 500, q: "Sub-metacentric chromosome: centromere position = _____.", a: "Slightly away from the middle" },
   { id: 501, q: "Acrocentric chromosome: centromere position = _____.", a: "Close to one end" },
   { id: 502, q: "Telocentric chromosome: centromere position = _____.", a: "Terminal" },
+    { id: 503, q: "Sometimes a few chromosomes have non-staining _____ at a constant location.", a: "Secondary constrictions" },
+  { id: 504, q: "Secondary constrictions give the appearance of a small fragment called the _____.", a: "Satellite" },
+  { id: 505, q: "Many membrane-bound minute vesicles containing various enzymes are called _____.", a: "Microbodies" },
+  { id: 506, q: "Microbodies are present in _____ cells.", a: "Both plant and animal cells" },
+  { id: 507, q: "Microbodies contain various _____.", a: "Enzymes" },
+  { id: 508, q: "Besides proteins, ER helps in the synthesis of _____ and _____.", a: "Lipoproteins and glycogen" },
+  { id: 509, q: "Secondary constrictions of chromosomes are _____ (Staining / Non-staining).", a: "Non-staining" }
 
-
-
-  
 ];
